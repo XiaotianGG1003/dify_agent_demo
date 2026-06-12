@@ -1,0 +1,3864 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  icon_type: emoji
+  mode: advanced-chat
+  name: hello-agent
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: agimaster/justwait:0.0.2@1cc2d5e7fbd6a829396c8a51947924f799f9566071bf8499c4e2a9f75ad3330f
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: jaguarliuu/rookie_text2data:1.0.3@3041f4cfe193deb03f716fedfd2e7dae1601021cf39f94c462af8d6babd1e3fd
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/gemini:0.8.4@23aed1fa4d2c8015337bd18efa28b3dccf5b7309a83b1501541fb7358518faec
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai:0.4.2@21195ee1321849e0a7d4b3f6b2fd8c2be23ea6c7182e1b444ecc4c1711b52468
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: sawyer-shi/seedream_aigc:0.0.2@5d7eceb101e80337ac5885d1c6214bad7cb9989edbfc7174f97abedd2489f465
+    version: null
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: f9f68cbf-0e76-4976-b0ee-e19aa147add3
+    name: password
+    selector:
+    - env
+    - password
+    value: '123456'
+    value_type: string
+  - description: ''
+    id: 200aabd4-f5f8-40d7-ad67-55070694b788
+    name: username
+    selector:
+    - env
+    - username
+    value: agent_test
+    value_type: string
+  - description: ''
+    id: 03e5bc25-8649-4996-be32-70d97abe412d
+    name: database
+    selector:
+    - env
+    - database
+    value: agent_test
+    value_type: string
+  - description: ''
+    id: 5e9a6f3a-a304-4a0c-a485-40139737ba84
+    name: host
+    selector:
+    - env
+    - host
+    value: 8.148.4.117
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 50
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: llm
+        targetType: answer
+      id: llm-answer
+      selected: false
+      source: llm
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: question-classifier
+      id: 1772607697135-source-1772607802336-target
+      selected: false
+      source: '1772607697135'
+      sourceHandle: source
+      target: '1772607802336'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1772607802336-1-llm-target
+      selected: false
+      source: '1772607802336'
+      sourceHandle: '1'
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1772607802336-2-1772608323937-target
+      selected: false
+      source: '1772607802336'
+      sourceHandle: '2'
+      target: '1772608323937'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1772608323937-source-1772609659544-target
+      selected: false
+      source: '1772608323937'
+      sourceHandle: source
+      target: '1772609659544'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: agent
+      id: 1772607802336-1772612511346-1772612743924-target
+      selected: false
+      source: '1772607802336'
+      sourceHandle: '1772612511346'
+      target: '1772612743924'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: agent
+        targetType: answer
+      id: 1772612743924-source-1772613118306-target
+      selected: false
+      source: '1772612743924'
+      sourceHandle: source
+      target: '1772613118306'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: tool
+      id: 1772607802336-1772612710425-1772613889935-target
+      selected: false
+      source: '1772607802336'
+      sourceHandle: '1772612710425'
+      target: '1772613889935'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: tool
+      id: 1772613889935--1772614123166-target
+      selected: false
+      source: '1772613889935'
+      sourceHandle: source
+      target: '1772614123166'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: tool
+      id: 1772607802336-1772612714609-1772614185469-target
+      selected: false
+      source: '1772607802336'
+      sourceHandle: '1772612714609'
+      target: '1772614185469'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: tool
+      id: 1772614185469-source-1772614190380-target
+      selected: false
+      source: '1772614185469'
+      sourceHandle: source
+      target: '1772614190380'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: llm
+      id: 1772614190380-source-1772614510282-target
+      selected: false
+      source: '1772614190380'
+      sourceHandle: source
+      target: '1772614510282'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1772614510282-source-1772614193029-target
+      selected: false
+      source: '1772614510282'
+      sourceHandle: source
+      target: '1772614193029'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: agent
+      id: 1772614123166-source-1772632185101-target
+      source: '1772614123166'
+      sourceHandle: source
+      target: '1772632185101'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: agent
+        targetType: answer
+      id: 1772632185101-source-1772635507739-target
+      source: '1772632185101'
+      sourceHandle: source
+      target: '1772635507739'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: tool
+      id: 1772607802336-1772607930403-1779682609568-target
+      source: '1772607802336'
+      sourceHandle: '1772607930403'
+      target: '1779682609568'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1779682609568-source-1772611604992-target
+      source: '1779682609568'
+      sourceHandle: source
+      target: '1772611604992'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: tool
+      id: 1772607802336-1772607934867-1779683236178-target
+      source: '1772607802336'
+      sourceHandle: '1772607934867'
+      target: '1779683236178'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: parameter-extractor
+      id: 1779683236178-source-1779684902178-target
+      source: '1779683236178'
+      sourceHandle: source
+      target: '1779684902178'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: parameter-extractor
+        targetType: loop
+      id: 1779684902178-source-1779685907885-target
+      source: '1779684902178'
+      sourceHandle: source
+      target: '1779685907885'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1779685907885'
+        sourceType: tool
+        targetType: answer
+      id: 1779685925567--1779685936065-target
+      source: '1779685925567'
+      sourceHandle: source
+      target: '1779685936065'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1779685907885'
+        sourceType: loop-start
+        targetType: tool
+      id: 1779685907885start-source-1779686165092-target
+      source: 1779685907885start
+      sourceHandle: source
+      target: '1779686165092'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1779685907885'
+        sourceType: tool
+        targetType: tool
+      id: 1779686165092-source-1779685925567-target
+      source: '1779686165092'
+      sourceHandle: source
+      target: '1779685925567'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    nodes:
+    - data:
+        selected: false
+        title: 用户输入
+        type: start
+        variables: []
+      height: 72
+      id: '1772607697135'
+      position:
+        x: 0
+        y: 583.5999999999999
+      positionAbsolute:
+        x: 0
+        y: 583.5999999999999
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params: {}
+          mode: chat
+          name: gpt-5.4
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 54594fcb-5feb-438b-8b47-5ef16ab7d0d6
+          role: system
+          text: "# Role: 日常问题咨询专家\n\n## Profile\n- language: 中文\n- description: 专门回答用户日常生活中的一般性问题，提供实用、准确、易懂的建议和解答\n\
+            - background: 拥有丰富的生活经验和广泛的知识储备，擅长将复杂问题简单化\n- personality: 亲切友好、耐心细致、务实可靠\n\
+            - expertise: 日常生活、健康养生、家庭管理、人际关系、实用技巧\n\n\n## Skills\n\n1. 问题分析能力\n  \
+            \ - 快速理解: 迅速把握用户问题的核心要点\n   - 分类识别: 准确判断问题所属的生活领域\n   - 需求挖掘: 深入理解用户潜在需求\n\
+            \   - 优先级排序: 合理评估问题的重要性和紧急性\n\n2. 解答提供能力\n   - 知识整合: 综合运用多领域知识提供解答\n \
+            \  - 方案制定: 提供具体可行的解决方案\n   - 步骤分解: 将复杂问题拆解为简单步骤\n   - 替代方案: 准备多种备选方案供用户选择\n\
+            \n3. 沟通表达能力\n   - 语言通俗: 使用简单易懂的日常用语\n   - 逻辑清晰: 条理分明地组织回答内容\n   - 举例说明:\
+            \ 通过具体案例帮助理解\n   - 重点突出: 强调关键信息和注意事项\n\n## Rules\n\n1. 回答原则：\n   - 实用性优先:\
+            \ 确保提供的建议具有可操作性\n   - 准确性保证: 基于可靠信息和常识给出回答\n   - 中立客观: 避免个人偏见和主观臆断\n \
+            \  - 适度建议: 根据问题复杂程度提供适当深度的解答\n\n2. 行为准则：\n   - 及时响应: 快速回应用户的问题\n   - 耐心细致:\
+            \ 对重复或简单问题保持耐心\n   - 积极引导: 鼓励用户提供更多背景信息\n   - 持续改进: 根据反馈优化回答质量\n\n\n##\
+            \ Workflows\n\n- 目标: 为用户提供实用、可靠的日常问题解决方案\n- 步骤 1: 仔细阅读并理解用户提出的日常问题\n-\
+            \ 步骤 2: 分析问题类型和用户潜在需求\n- 步骤 3: 基于常识和经验提供具体可行的建议\n- 步骤 4: 用通俗易懂的语言组织回答内容\n\
+            - 步骤 5: 检查回答的实用性和安全性\n\n\n## Initialization\n作为日常问题咨询专家，你必须遵守上述Rules，按照Workflows执行任务。\n"
+        selected: false
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: llm
+      position:
+        x: 703
+        y: 0
+      positionAbsolute:
+        x: 703
+        y: 0
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: '{{#llm.text#}}'
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 102
+      id: answer
+      position:
+        x: 1044
+        y: 7
+      positionAbsolute:
+        x: 1044
+        y: 7
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        classes:
+        - id: '1'
+          name: 一般性日常生活问题
+        - id: '2'
+          name: 优化文案
+        - id: '1772607930403'
+          name: 生成图片
+        - id: '1772607934867'
+          name: 生成视频
+        - id: '1772612511346'
+          name: 城市的天气、地图经纬度、IP 地址、骑行路径规划、驾车路径规划、公交路径规划、距离测量、周边搜获
+        - id: '1772612706713'
+          name: 今天有什么最新新闻、行业动态追踪
+        - id: '1772612710425'
+          name: 数据分析
+        - id: '1772612714609'
+          name: 数据库查询类问题，例如“查询张三年龄”“统计人数”“查看订单列表”
+        instructions: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-5-chat-latest
+          provider: langgenius/openai/openai
+        query_variable_selector:
+        - '1772607697135'
+        - sys.query
+        selected: false
+        title: 问题分类器
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 429
+      id: '1772607802336'
+      position:
+        x: 342
+        y: 396.09999999999997
+      positionAbsolute:
+        x: 342
+        y: 396.09999999999997
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params: {}
+          mode: chat
+          name: gpt-5.4
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: a46190b5-e52f-4642-a017-f62096c4b210
+          role: system
+          text: '# 一、 角色人设（Role）
+
+            你是一位专业的文案优化专家，拥有丰富的营销文案写作和优化经验，擅长提升文案的吸引力、转化率和可读性。你的视角是站在目标受众和营销目标的角度，专业度边界限于文案优化领域，不涉及技术实现或产品开发。
+
+
+            # 二、 背景（Background）
+
+            用户提供了一段原始文案，需要你对其进行优化，以提升其整体效果。背景信息包括：文案可能用于营销、品牌推广或信息传达等场景，但具体用途未详细说明。已知条件是用户希望文案更吸引人、清晰或具有说服力，但未提供原始文案内容，因此你需要基于通用优化原则工作。
+
+
+            # 三、 任务目标（Task）
+
+            - 分析并优化文案的结构、语言和风格，使其更符合目标受众的偏好。
+
+            - 提升文案的吸引力、可读性和转化潜力，确保信息传达清晰。
+
+            - 根据常见优化原则（如简洁性、情感共鸣、行动号召等）进行调整，不涉及内容重写，除非必要。
+
+            - 在保持核心信息的前提下，适当扩展和丰富文案内容，提供更全面的优化版本。
+
+
+            # 四、 限制提示（Limit）
+
+            - 避免改变原始文案的核心信息或意图，除非用户明确要求。
+
+            - 不要添加虚构或无关内容，确保优化基于逻辑和最佳实践。
+
+            - 避免使用过于技术性或专业术语，除非目标受众是专业人士。
+
+            - 不涉及对图片、布局或其他非文本元素的优化。
+
+
+            # 五、 输出格式要求（Example）
+
+            输出应为优化后的文案文本，结构清晰，语言流畅，内容详实。例如：
+
+            - 如果原始文案是“我们的产品很好，快来买吧”
+
+            优化后可以是：“在这个充满选择的时代，真正打动人心的从来不是浮夸的宣传，而是经得起时间和用户考验的好产品。我们的产品正是如此。它不仅在设计上注重细节与品质，更在功能上不断打磨与创新，只为给每一位用户带来更好的使用体验。无论是外观的质感，还是性能的稳定，我们始终坚持高标准严要求，力求让每一位选择我们的顾客都能感受到物超所值的惊喜。
+
+            我们深知，购买一款产品，不仅仅是一次简单的消费，更是一种对生活方式的选择。因此，我们从选材、工艺到售后服务的每一个环节，都倾注了满满的诚意与专业，用心守护您的每一次体验。无论您是追求实用、注重品质，还是想要与众不同的个性化，我们的产品都能为您提供理想的解决方案。
+
+            现在，就让我们用行动来证明一切。真正的好产品，不需要过多修饰，它本身就是最好的代言人。立即行动，选择我们，让品质改变生活，从此拥有与众不同的体验！”
+
+            - 输出应直接呈现优化内容，无需额外解释或注释，除非用户要求。请确保优化后的文案内容更加丰富和完整，优化后的文案文本须超过500字。'
+        selected: false
+        title: LLM 2
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1772608323937'
+      position:
+        x: 703
+        y: 182
+      positionAbsolute:
+        x: 703
+        y: 182
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: '{{#1772608323937.text#}}'
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 102
+      id: '1772609659544'
+      position:
+        x: 1044
+        y: 189
+      positionAbsolute:
+        x: 1044
+        y: 189
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: '{{#1779682609568.files#}}'
+        selected: false
+        title: 直接回复 3
+        type: answer
+        variables: []
+      height: 102
+      id: '1772611604992'
+      position:
+        x: 1044
+        y: 390.6666666666667
+      positionAbsolute:
+        x: 1044
+        y: 390.6666666666667
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: 根据用户输入{{#sys.query#}}，使用amap-map实现查询
+          mcp_servers_config:
+            type: constant
+            value: "{\n    \"amap-maps\": {\n      \"type\": \"sse\",\n      \"url\"\
+              : \"https://mcp.api-inference.modelscope.net/ffadc08a23244a/sse\"\n\
+              \    }\n}"
+          model:
+            type: constant
+            value:
+              completion_params: {}
+              mode: chat
+              model: gpt-5-chat-latest
+              model_type: llm
+              provider: langgenius/openai/openai
+              type: model-selector
+          query:
+            type: constant
+            value: '{{#sys.query#}}'
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: 获取时间戳
+              parameters:
+                localtime:
+                  auto: 1
+                  value: null
+                timezone:
+                  auto: 1
+                  value: null
+              provider_name: time
+              provider_show_name: time
+              settings: {}
+              tool_description: 获取时间戳
+              tool_label: 获取时间戳
+              tool_name: localtime_to_timestamp
+              type: builtin
+        agent_strategy_label: ReAct (支持 MCP 工具)
+        agent_strategy_name: mcp_sse_ReAct
+        agent_strategy_provider_name: junjiem/mcp_see_agent/mcp_see_agent
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          window:
+            enabled: false
+            size: 50
+        meta:
+          minimum_dify_version: null
+          version: 0.0.1
+        output_schema: {}
+        plugin_unique_identifier: junjiem/mcp_see_agent:0.2.4@82caf96890992e9dec2c43c3fac82bfce8bd18a41de7c2b6948151b2d7f7b7a2
+        selected: false
+        title: 高德MCP
+        tool_node_version: '2'
+        type: agent
+      height: 187
+      id: '1772612743924'
+      position:
+        x: 703
+        y: 995
+      positionAbsolute:
+        x: 703
+        y: 995
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: '{{#1772612743924.text#}}'
+        selected: false
+        title: 直接回复 5
+        type: answer
+        variables: []
+      height: 102
+      id: '1772613118306'
+      position:
+        x: 1044
+        y: 1068.6666666666667
+      positionAbsolute:
+        x: 1044
+        y: 1068.6666666666667
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Database type
+            ja_JP: Database type
+            pt_BR: Database type
+            zh_Hans: 数据库类型
+          label:
+            en_US: Database type
+            ja_JP: Database type
+            pt_BR: Database type
+            zh_Hans: 数据库类型
+          llm_description: Database type
+          max: null
+          min: null
+          name: db_type
+          options:
+          - icon: ''
+            label:
+              en_US: MySQL
+              ja_JP: MySQL
+              pt_BR: MySQL
+              zh_Hans: MySQL数据库
+            value: mysql
+          - icon: ''
+            label:
+              en_US: PostgreSQL
+              ja_JP: PostgreSQL
+              pt_BR: PostgreSQL
+              zh_Hans: PostgreSQL数据库
+            value: postgresql
+          - icon: ''
+            label:
+              en_US: SQL Server
+              ja_JP: SQL Server
+              pt_BR: SQL Server
+              zh_Hans: SQL Server数据库
+            value: sqlserver
+          - icon: ''
+            label:
+              en_US: Oracle
+              ja_JP: Oracle
+              pt_BR: Oracle
+              zh_Hans: Oracle数据库
+            value: oracle
+          - icon: ''
+            label:
+              en_US: GaussDB
+              ja_JP: GaussDB
+              pt_BR: GaussDB
+              zh_Hans: 华为高斯数据库
+            value: gaussdb
+          - icon: ''
+            label:
+              en_US: KingbaseES
+              ja_JP: KingbaseES
+              pt_BR: KingbaseES
+              zh_Hans: 人大金仓数据库
+            value: kingbase
+          - icon: ''
+            label:
+              en_US: DM Database
+              ja_JP: DM Database
+              pt_BR: DM Database
+              zh_Hans: 达梦数据库
+            value: dm
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: limit
+            ja_JP: limit
+            pt_BR: limit
+            zh_Hans: SQL返回数据量限制
+          label:
+            en_US: limit
+            ja_JP: limit
+            pt_BR: limit
+            zh_Hans: SQL返回数据量限制
+          llm_description: limit
+          max: 100000
+          min: 1
+          name: limit
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        - auto_generate: null
+          default: json
+          form: llm
+          human_description:
+            en_US: result_format
+            ja_JP: result_format
+            pt_BR: result_format
+            zh_Hans: 返回数据格式
+          label:
+            en_US: result_format
+            ja_JP: result_format
+            pt_BR: result_format
+            zh_Hans: 返回数据格式
+          llm_description: result_format
+          max: null
+          min: null
+          name: result_format
+          options:
+          - icon: ''
+            label:
+              en_US: JSON
+              ja_JP: JSON
+              pt_BR: JSON
+              zh_Hans: JSON
+            value: json
+          - icon: ''
+            label:
+              en_US: TEXT
+              ja_JP: TEXT
+              pt_BR: TEXT
+              zh_Hans: TEXT
+            value: text
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Database ip/host
+            ja_JP: Database ip/host
+            pt_BR: Database ip/host
+            zh_Hans: 数据库IP/域名
+          label:
+            en_US: Database ip/host
+            ja_JP: Database ip/host
+            pt_BR: Database ip/host
+            zh_Hans: 数据库IP/域名
+          llm_description: Database ip/host
+          max: null
+          min: null
+          name: host
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Database port
+            ja_JP: Database port
+            pt_BR: Database port
+            zh_Hans: 数据库端口
+          label:
+            en_US: Database port
+            ja_JP: Database port
+            pt_BR: Database port
+            zh_Hans: 数据库端口
+          llm_description: Database port
+          max: 65535
+          min: 1
+          name: port
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: number
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Database name
+            ja_JP: Database name
+            pt_BR: Database name
+            zh_Hans: 数据库名称
+          label:
+            en_US: Database name
+            ja_JP: Database name
+            pt_BR: Database name
+            zh_Hans: 数据库名称
+          llm_description: Database name
+          max: null
+          min: null
+          name: db_name
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: table_names
+            ja_JP: table_names
+            pt_BR: table_names
+            zh_Hans: 数据表名称
+          label:
+            en_US: table_names
+            ja_JP: table_names
+            pt_BR: table_names
+            zh_Hans: 数据表名称
+          llm_description: table_names
+          max: null
+          min: null
+          name: table_names
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Schema name
+            ja_JP: Schema name
+            pt_BR: Schema name
+            zh_Hans: 数据库Schema PGSQL用户选填，默认为public
+          label:
+            en_US: Schema name
+            ja_JP: Schema name
+            pt_BR: Schema name
+            zh_Hans: 数据库Schema（PGSQL默认为public，Oracle/DM默认为用户名大写）
+          llm_description: Schema name
+          max: null
+          min: null
+          name: schema_name
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Username
+            ja_JP: Username
+            pt_BR: Username
+            zh_Hans: 用户名
+          label:
+            en_US: Username
+            ja_JP: Username
+            pt_BR: Username
+            zh_Hans: 用户名
+          llm_description: Username
+          max: null
+          min: null
+          name: username
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Password
+            ja_JP: Password
+            pt_BR: Password
+            zh_Hans: 密码
+          label:
+            en_US: Password
+            ja_JP: Password
+            pt_BR: Password
+            zh_Hans: 密码
+          llm_description: Password
+          max: null
+          min: null
+          name: password
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: secret-input
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: LLM model for text2data.
+            ja_JP: LLM model for text2data.
+            pt_BR: LLM model for text2data.
+            zh_Hans: LLM model for text2data.
+          label:
+            en_US: Model
+            ja_JP: Model
+            pt_BR: Model
+            zh_Hans: 模型
+          llm_description: LLM model for text2data.
+          max: null
+          min: null
+          name: model
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: llm
+          template: null
+          type: model-selector
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Fetching data from the database using natural language.
+            ja_JP: Fetching data from the database using natural language.
+            pt_BR: Fetching data from the database using natural language.
+            zh_Hans: Fetching data from the database using natural language.
+          label:
+            en_US: Query string
+            ja_JP: Query string
+            pt_BR: Query string
+            zh_Hans: 查询语句
+          llm_description: Fetching data from the database using natural language.
+          max: null
+          min: null
+          name: query
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: custom_prompt
+            ja_JP: custom_prompt
+            pt_BR: custom_prompt
+            zh_Hans: 自定义提示
+          label:
+            en_US: custom_prompt
+            ja_JP: custom_prompt
+            pt_BR: custom_prompt
+            zh_Hans: 自定义提示
+          llm_description: custom_prompt
+          max: null
+          min: null
+          name: custom_prompt
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: with_comment
+            ja_JP: with_comment
+            pt_BR: with_comment
+            zh_Hans: 是否包含注释
+          label:
+            en_US: with_comment
+            ja_JP: with_comment
+            pt_BR: with_comment
+            zh_Hans: 是否包含注释
+          llm_description: with_comment
+          max: null
+          min: null
+          name: with_comment
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: boolean
+        params:
+          custom_prompt: ''
+          db_name: ''
+          db_type: ''
+          host: ''
+          limit: ''
+          model: ''
+          password: ''
+          port: ''
+          query: ''
+          result_format: ''
+          schema_name: ''
+          table_names: ''
+          username: ''
+          with_comment: ''
+        plugin_id: jaguarliuu/rookie_text2data
+        plugin_unique_identifier: jaguarliuu/rookie_text2data:1.0.3@3041f4cfe193deb03f716fedfd2e7dae1601021cf39f94c462af8d6babd1e3fd
+        provider_icon: https://cloud.dify.ai/console/api/workspaces/current/plugin/icon?tenant_id=b005d3c3-7376-4ee8-835c-092adeee3cbe&filename=9585e221a1e207d23f39a174ec40644ef73683bd5cbb96d80f0e2656a0bfc618.svg
+        provider_id: jaguarliuu/rookie_text2data/rookie_text2data
+        provider_name: jaguarliuu/rookie_text2data/rookie_text2data
+        provider_type: builtin
+        selected: false
+        title: rookie_text2data
+        tool_configurations:
+          model:
+            type: constant
+            value:
+              completion_params: {}
+              mode: chat
+              model: gpt-5-chat-latest
+              model_type: llm
+              provider: langgenius/openai/openai
+          with_comment:
+            type: constant
+            value: true
+        tool_description: 使用自然语言从MySQL获取数据
+        tool_label: rookie_text2data
+        tool_name: rookie_text2data
+        tool_node_version: '2'
+        tool_parameters:
+          custom_prompt:
+            type: mixed
+            value: "表结构：\nCREATE TABLE `student` (\n                           `id`\
+              \ int(11) NOT NULL COMMENT 'id标识',\n                           `name`\
+              \ varchar(255) NOT NULL COMMENT '名字',\n                           `age`\
+              \ int(11) NOT NULL COMMENT '年龄',\n                           `sex` char(1)\
+              \ NOT NULL COMMENT '性别',\n                           PRIMARY KEY (`id`)\n\
+              ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;"
+          db_name:
+            type: mixed
+            value: '{{#env.database#}}'
+          db_type:
+            type: constant
+            value: mysql
+          host:
+            type: mixed
+            value: '{{#env.host#}}'
+          limit:
+            type: constant
+            value: null
+          password:
+            type: mixed
+            value: '{{#env.password#}}'
+          port:
+            type: constant
+            value: 3306
+          query:
+            type: mixed
+            value: '{{#sys.query#}}'
+          result_format:
+            type: constant
+            value: text
+          schema_name:
+            type: mixed
+            value: null
+          table_names:
+            type: mixed
+            value: student
+          username:
+            type: mixed
+            value: '{{#env.username#}}'
+        type: tool
+      height: 113
+      id: '1772613889935'
+      position:
+        x: 703
+        y: 1262
+      positionAbsolute:
+        x: 703
+        y: 1262
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Database type
+            ja_JP: Database type
+            pt_BR: Database type
+            zh_Hans: 数据库类型
+          label:
+            en_US: Database type
+            ja_JP: Database type
+            pt_BR: Database type
+            zh_Hans: 数据库类型
+          llm_description: Database type
+          max: null
+          min: null
+          name: db_type
+          options:
+          - icon: ''
+            label:
+              en_US: MySQL
+              ja_JP: MySQL
+              pt_BR: MySQL
+              zh_Hans: MySQL
+            value: mysql
+          - icon: ''
+            label:
+              en_US: PostgreSQL
+              ja_JP: PostgreSQL
+              pt_BR: PostgreSQL
+              zh_Hans: PostgreSQL
+            value: postgresql
+          - icon: ''
+            label:
+              en_US: SQL Server
+              ja_JP: SQL Server
+              pt_BR: SQL Server
+              zh_Hans: SQL Server
+            value: sqlserver
+          - icon: ''
+            label:
+              en_US: Oracle
+              ja_JP: Oracle
+              pt_BR: Oracle
+              zh_Hans: Oracle
+            value: oracle
+          - icon: ''
+            label:
+              en_US: GaussDB
+              ja_JP: GaussDB
+              pt_BR: GaussDB
+              zh_Hans: 华为高斯数据库
+            value: gaussdb
+          - icon: ''
+            label:
+              en_US: KingbaseES
+              ja_JP: KingbaseES
+              pt_BR: KingbaseES
+              zh_Hans: 人大金仓数据库
+            value: kingbase
+          - icon: ''
+            label:
+              en_US: DM Database
+              ja_JP: DM Database
+              pt_BR: DM Database
+              zh_Hans: 达梦数据库
+            value: dm
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Database ip/host
+            ja_JP: Database ip/host
+            pt_BR: Database ip/host
+            zh_Hans: 数据库IP/域名
+          label:
+            en_US: Database ip/host
+            ja_JP: Database ip/host
+            pt_BR: Database ip/host
+            zh_Hans: 数据库IP/域名
+          llm_description: Database ip/host
+          max: null
+          min: null
+          name: host
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Database port
+            ja_JP: Database port
+            pt_BR: Database port
+            zh_Hans: 数据库端口
+          label:
+            en_US: Database port
+            ja_JP: Database port
+            pt_BR: Database port
+            zh_Hans: 数据库端口
+          llm_description: Database port
+          max: 65535
+          min: 1
+          name: port
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: number
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Database name
+            ja_JP: Database name
+            pt_BR: Database name
+            zh_Hans: 数据库名称
+          label:
+            en_US: Database name
+            ja_JP: Database name
+            pt_BR: Database name
+            zh_Hans: 数据库名称
+          llm_description: Database name
+          max: null
+          min: null
+          name: db_name
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Username
+            ja_JP: Username
+            pt_BR: Username
+            zh_Hans: 用户名
+          label:
+            en_US: Username
+            ja_JP: Username
+            pt_BR: Username
+            zh_Hans: 用户名
+          llm_description: Username
+          max: null
+          min: null
+          name: username
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Password
+            ja_JP: Password
+            pt_BR: Password
+            zh_Hans: 密码
+          label:
+            en_US: Password
+            ja_JP: Password
+            pt_BR: Password
+            zh_Hans: 密码
+          llm_description: Password
+          max: null
+          min: null
+          name: password
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: secret-input
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Schema name
+            ja_JP: Schema name
+            pt_BR: Schema name
+            zh_Hans: 数据库Schema PGSQL用户选填，默认为public
+          label:
+            en_US: Schema name
+            ja_JP: Schema name
+            pt_BR: Schema name
+            zh_Hans: 数据库Schema（PGSQL默认为public，Oracle/DM默认为用户名大写）
+          llm_description: Schema name
+          max: null
+          min: null
+          name: schema
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Fetching data from the database using natural language.
+            ja_JP: Fetching data from the database using natural language.
+            pt_BR: Fetching data from the database using natural language.
+            zh_Hans: Fetching data from the database using natural language.
+          label:
+            en_US: SQL string
+            ja_JP: SQL string
+            pt_BR: SQL string
+            zh_Hans: 待执行的 SQL 语句
+          llm_description: Fetching data from the database using natural language.
+          max: null
+          min: null
+          name: sql
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: json
+          form: llm
+          human_description:
+            en_US: result_format
+            ja_JP: result_format
+            pt_BR: result_format
+            zh_Hans: 返回数据格式
+          label:
+            en_US: result_format
+            ja_JP: result_format
+            pt_BR: result_format
+            zh_Hans: 返回数据格式
+          llm_description: result_format
+          max: null
+          min: null
+          name: result_format
+          options:
+          - icon: ''
+            label:
+              en_US: JSON
+              ja_JP: JSON
+              pt_BR: JSON
+              zh_Hans: JSON
+            value: json
+          - icon: ''
+            label:
+              en_US: TEXT
+              ja_JP: TEXT
+              pt_BR: TEXT
+              zh_Hans: TEXT
+            value: text
+          - icon: ''
+            label:
+              en_US: CSV
+              ja_JP: CSV
+              pt_BR: CSV
+              zh_Hans: CSV
+            value: csv
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          db_name: ''
+          db_type: ''
+          host: ''
+          password: ''
+          port: ''
+          result_format: ''
+          schema: ''
+          sql: ''
+          username: ''
+        plugin_id: jaguarliuu/rookie_text2data
+        plugin_unique_identifier: jaguarliuu/rookie_text2data:1.0.3@3041f4cfe193deb03f716fedfd2e7dae1601021cf39f94c462af8d6babd1e3fd
+        provider_icon: https://cloud.dify.ai/console/api/workspaces/current/plugin/icon?tenant_id=b005d3c3-7376-4ee8-835c-092adeee3cbe&filename=9585e221a1e207d23f39a174ec40644ef73683bd5cbb96d80f0e2656a0bfc618.svg
+        provider_id: jaguarliuu/rookie_text2data/rookie_text2data
+        provider_name: jaguarliuu/rookie_text2data/rookie_text2data
+        provider_type: builtin
+        selected: false
+        title: rookie_excute_sql
+        tool_configurations: {}
+        tool_description: sql 执行器
+        tool_label: rookie_excute_sql
+        tool_name: rookie_excute_sql
+        tool_node_version: '2'
+        tool_parameters:
+          db_name:
+            type: mixed
+            value: '{{#env.database#}}'
+          db_type:
+            type: constant
+            value: mysql
+          host:
+            type: mixed
+            value: '{{#env.host#}}'
+          password:
+            type: mixed
+            value: '{{#env.password#}}'
+          port:
+            type: constant
+            value: 3306
+          result_format:
+            type: constant
+            value: json
+          schema:
+            type: mixed
+            value: null
+          sql:
+            type: mixed
+            value: '{{#1772613889935.text#}}'
+          username:
+            type: mixed
+            value: '{{#env.username#}}'
+        type: tool
+      height: 51
+      id: '1772614123166'
+      position:
+        x: 1044
+        y: 1311.8333333333335
+      positionAbsolute:
+        x: 1044
+        y: 1311.8333333333335
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Database type
+            ja_JP: Database type
+            pt_BR: Database type
+            zh_Hans: 数据库类型
+          label:
+            en_US: Database type
+            ja_JP: Database type
+            pt_BR: Database type
+            zh_Hans: 数据库类型
+          llm_description: Database type
+          max: null
+          min: null
+          name: db_type
+          options:
+          - icon: ''
+            label:
+              en_US: MySQL
+              ja_JP: MySQL
+              pt_BR: MySQL
+              zh_Hans: MySQL数据库
+            value: mysql
+          - icon: ''
+            label:
+              en_US: PostgreSQL
+              ja_JP: PostgreSQL
+              pt_BR: PostgreSQL
+              zh_Hans: PostgreSQL数据库
+            value: postgresql
+          - icon: ''
+            label:
+              en_US: SQL Server
+              ja_JP: SQL Server
+              pt_BR: SQL Server
+              zh_Hans: SQL Server数据库
+            value: sqlserver
+          - icon: ''
+            label:
+              en_US: Oracle
+              ja_JP: Oracle
+              pt_BR: Oracle
+              zh_Hans: Oracle数据库
+            value: oracle
+          - icon: ''
+            label:
+              en_US: GaussDB
+              ja_JP: GaussDB
+              pt_BR: GaussDB
+              zh_Hans: 华为高斯数据库
+            value: gaussdb
+          - icon: ''
+            label:
+              en_US: KingbaseES
+              ja_JP: KingbaseES
+              pt_BR: KingbaseES
+              zh_Hans: 人大金仓数据库
+            value: kingbase
+          - icon: ''
+            label:
+              en_US: DM Database
+              ja_JP: DM Database
+              pt_BR: DM Database
+              zh_Hans: 达梦数据库
+            value: dm
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: limit
+            ja_JP: limit
+            pt_BR: limit
+            zh_Hans: SQL返回数据量限制
+          label:
+            en_US: limit
+            ja_JP: limit
+            pt_BR: limit
+            zh_Hans: SQL返回数据量限制
+          llm_description: limit
+          max: 100000
+          min: 1
+          name: limit
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        - auto_generate: null
+          default: json
+          form: llm
+          human_description:
+            en_US: result_format
+            ja_JP: result_format
+            pt_BR: result_format
+            zh_Hans: 返回数据格式
+          label:
+            en_US: result_format
+            ja_JP: result_format
+            pt_BR: result_format
+            zh_Hans: 返回数据格式
+          llm_description: result_format
+          max: null
+          min: null
+          name: result_format
+          options:
+          - icon: ''
+            label:
+              en_US: JSON
+              ja_JP: JSON
+              pt_BR: JSON
+              zh_Hans: JSON
+            value: json
+          - icon: ''
+            label:
+              en_US: TEXT
+              ja_JP: TEXT
+              pt_BR: TEXT
+              zh_Hans: TEXT
+            value: text
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Database ip/host
+            ja_JP: Database ip/host
+            pt_BR: Database ip/host
+            zh_Hans: 数据库IP/域名
+          label:
+            en_US: Database ip/host
+            ja_JP: Database ip/host
+            pt_BR: Database ip/host
+            zh_Hans: 数据库IP/域名
+          llm_description: Database ip/host
+          max: null
+          min: null
+          name: host
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Database port
+            ja_JP: Database port
+            pt_BR: Database port
+            zh_Hans: 数据库端口
+          label:
+            en_US: Database port
+            ja_JP: Database port
+            pt_BR: Database port
+            zh_Hans: 数据库端口
+          llm_description: Database port
+          max: 65535
+          min: 1
+          name: port
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: number
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Database name
+            ja_JP: Database name
+            pt_BR: Database name
+            zh_Hans: 数据库名称
+          label:
+            en_US: Database name
+            ja_JP: Database name
+            pt_BR: Database name
+            zh_Hans: 数据库名称
+          llm_description: Database name
+          max: null
+          min: null
+          name: db_name
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: table_names
+            ja_JP: table_names
+            pt_BR: table_names
+            zh_Hans: 数据表名称
+          label:
+            en_US: table_names
+            ja_JP: table_names
+            pt_BR: table_names
+            zh_Hans: 数据表名称
+          llm_description: table_names
+          max: null
+          min: null
+          name: table_names
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Schema name
+            ja_JP: Schema name
+            pt_BR: Schema name
+            zh_Hans: 数据库Schema PGSQL用户选填，默认为public
+          label:
+            en_US: Schema name
+            ja_JP: Schema name
+            pt_BR: Schema name
+            zh_Hans: 数据库Schema（PGSQL默认为public，Oracle/DM默认为用户名大写）
+          llm_description: Schema name
+          max: null
+          min: null
+          name: schema_name
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Username
+            ja_JP: Username
+            pt_BR: Username
+            zh_Hans: 用户名
+          label:
+            en_US: Username
+            ja_JP: Username
+            pt_BR: Username
+            zh_Hans: 用户名
+          llm_description: Username
+          max: null
+          min: null
+          name: username
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Password
+            ja_JP: Password
+            pt_BR: Password
+            zh_Hans: 密码
+          label:
+            en_US: Password
+            ja_JP: Password
+            pt_BR: Password
+            zh_Hans: 密码
+          llm_description: Password
+          max: null
+          min: null
+          name: password
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: secret-input
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: LLM model for text2data.
+            ja_JP: LLM model for text2data.
+            pt_BR: LLM model for text2data.
+            zh_Hans: LLM model for text2data.
+          label:
+            en_US: Model
+            ja_JP: Model
+            pt_BR: Model
+            zh_Hans: 模型
+          llm_description: LLM model for text2data.
+          max: null
+          min: null
+          name: model
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: llm
+          template: null
+          type: model-selector
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Fetching data from the database using natural language.
+            ja_JP: Fetching data from the database using natural language.
+            pt_BR: Fetching data from the database using natural language.
+            zh_Hans: Fetching data from the database using natural language.
+          label:
+            en_US: Query string
+            ja_JP: Query string
+            pt_BR: Query string
+            zh_Hans: 查询语句
+          llm_description: Fetching data from the database using natural language.
+          max: null
+          min: null
+          name: query
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: custom_prompt
+            ja_JP: custom_prompt
+            pt_BR: custom_prompt
+            zh_Hans: 自定义提示
+          label:
+            en_US: custom_prompt
+            ja_JP: custom_prompt
+            pt_BR: custom_prompt
+            zh_Hans: 自定义提示
+          llm_description: custom_prompt
+          max: null
+          min: null
+          name: custom_prompt
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: with_comment
+            ja_JP: with_comment
+            pt_BR: with_comment
+            zh_Hans: 是否包含注释
+          label:
+            en_US: with_comment
+            ja_JP: with_comment
+            pt_BR: with_comment
+            zh_Hans: 是否包含注释
+          llm_description: with_comment
+          max: null
+          min: null
+          name: with_comment
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: boolean
+        params:
+          custom_prompt: ''
+          db_name: ''
+          db_type: ''
+          host: ''
+          limit: ''
+          model: ''
+          password: ''
+          port: ''
+          query: ''
+          result_format: ''
+          schema_name: ''
+          table_names: ''
+          username: ''
+          with_comment: ''
+        plugin_id: jaguarliuu/rookie_text2data
+        plugin_unique_identifier: jaguarliuu/rookie_text2data:1.0.3@3041f4cfe193deb03f716fedfd2e7dae1601021cf39f94c462af8d6babd1e3fd
+        provider_icon: https://cloud.dify.ai/console/api/workspaces/current/plugin/icon?tenant_id=b005d3c3-7376-4ee8-835c-092adeee3cbe&filename=9585e221a1e207d23f39a174ec40644ef73683bd5cbb96d80f0e2656a0bfc618.svg
+        provider_id: jaguarliuu/rookie_text2data/rookie_text2data
+        provider_name: jaguarliuu/rookie_text2data/rookie_text2data
+        provider_type: builtin
+        selected: false
+        title: rookie_text2data
+        tool_configurations:
+          model:
+            type: constant
+            value:
+              completion_params: {}
+              mode: chat
+              model: gpt-5-chat-latest
+              model_type: llm
+              provider: langgenius/openai/openai
+          with_comment:
+            type: constant
+            value: true
+        tool_description: 使用自然语言从MySQL获取数据
+        tool_label: rookie_text2data
+        tool_name: rookie_text2data
+        tool_node_version: '2'
+        tool_parameters:
+          custom_prompt:
+            type: mixed
+            value: "表结构：\nCREATE TABLE `student` (\n                           `id`\
+              \ int(11) NOT NULL COMMENT 'id标识',\n                           `name`\
+              \ varchar(255) NOT NULL COMMENT '名字',\n                           `age`\
+              \ int(11) NOT NULL COMMENT '年龄',\n                           `sex` char(1)\
+              \ NOT NULL COMMENT '性别',\n                           PRIMARY KEY (`id`)\n\
+              ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;"
+          db_name:
+            type: mixed
+            value: '{{#env.database#}}'
+          db_type:
+            type: constant
+            value: mysql
+          host:
+            type: mixed
+            value: '{{#env.host#}}'
+          limit:
+            type: constant
+            value: null
+          password:
+            type: mixed
+            value: '{{#env.password#}}'
+          port:
+            type: constant
+            value: 3306
+          query:
+            type: mixed
+            value: '{{#sys.query#}}'
+          result_format:
+            type: constant
+            value: text
+          schema_name:
+            type: mixed
+            value: null
+          table_names:
+            type: mixed
+            value: student
+          username:
+            type: mixed
+            value: '{{#env.username#}}'
+        type: tool
+      height: 113
+      id: '1772614185469'
+      position:
+        x: 703
+        y: 1479
+      positionAbsolute:
+        x: 703
+        y: 1479
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Database type
+            ja_JP: Database type
+            pt_BR: Database type
+            zh_Hans: 数据库类型
+          label:
+            en_US: Database type
+            ja_JP: Database type
+            pt_BR: Database type
+            zh_Hans: 数据库类型
+          llm_description: Database type
+          max: null
+          min: null
+          name: db_type
+          options:
+          - icon: ''
+            label:
+              en_US: MySQL
+              ja_JP: MySQL
+              pt_BR: MySQL
+              zh_Hans: MySQL
+            value: mysql
+          - icon: ''
+            label:
+              en_US: PostgreSQL
+              ja_JP: PostgreSQL
+              pt_BR: PostgreSQL
+              zh_Hans: PostgreSQL
+            value: postgresql
+          - icon: ''
+            label:
+              en_US: SQL Server
+              ja_JP: SQL Server
+              pt_BR: SQL Server
+              zh_Hans: SQL Server
+            value: sqlserver
+          - icon: ''
+            label:
+              en_US: Oracle
+              ja_JP: Oracle
+              pt_BR: Oracle
+              zh_Hans: Oracle
+            value: oracle
+          - icon: ''
+            label:
+              en_US: GaussDB
+              ja_JP: GaussDB
+              pt_BR: GaussDB
+              zh_Hans: 华为高斯数据库
+            value: gaussdb
+          - icon: ''
+            label:
+              en_US: KingbaseES
+              ja_JP: KingbaseES
+              pt_BR: KingbaseES
+              zh_Hans: 人大金仓数据库
+            value: kingbase
+          - icon: ''
+            label:
+              en_US: DM Database
+              ja_JP: DM Database
+              pt_BR: DM Database
+              zh_Hans: 达梦数据库
+            value: dm
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Database ip/host
+            ja_JP: Database ip/host
+            pt_BR: Database ip/host
+            zh_Hans: 数据库IP/域名
+          label:
+            en_US: Database ip/host
+            ja_JP: Database ip/host
+            pt_BR: Database ip/host
+            zh_Hans: 数据库IP/域名
+          llm_description: Database ip/host
+          max: null
+          min: null
+          name: host
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Database port
+            ja_JP: Database port
+            pt_BR: Database port
+            zh_Hans: 数据库端口
+          label:
+            en_US: Database port
+            ja_JP: Database port
+            pt_BR: Database port
+            zh_Hans: 数据库端口
+          llm_description: Database port
+          max: 65535
+          min: 1
+          name: port
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: number
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Database name
+            ja_JP: Database name
+            pt_BR: Database name
+            zh_Hans: 数据库名称
+          label:
+            en_US: Database name
+            ja_JP: Database name
+            pt_BR: Database name
+            zh_Hans: 数据库名称
+          llm_description: Database name
+          max: null
+          min: null
+          name: db_name
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Username
+            ja_JP: Username
+            pt_BR: Username
+            zh_Hans: 用户名
+          label:
+            en_US: Username
+            ja_JP: Username
+            pt_BR: Username
+            zh_Hans: 用户名
+          llm_description: Username
+          max: null
+          min: null
+          name: username
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Password
+            ja_JP: Password
+            pt_BR: Password
+            zh_Hans: 密码
+          label:
+            en_US: Password
+            ja_JP: Password
+            pt_BR: Password
+            zh_Hans: 密码
+          llm_description: Password
+          max: null
+          min: null
+          name: password
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: secret-input
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Schema name
+            ja_JP: Schema name
+            pt_BR: Schema name
+            zh_Hans: 数据库Schema PGSQL用户选填，默认为public
+          label:
+            en_US: Schema name
+            ja_JP: Schema name
+            pt_BR: Schema name
+            zh_Hans: 数据库Schema（PGSQL默认为public，Oracle/DM默认为用户名大写）
+          llm_description: Schema name
+          max: null
+          min: null
+          name: schema
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Fetching data from the database using natural language.
+            ja_JP: Fetching data from the database using natural language.
+            pt_BR: Fetching data from the database using natural language.
+            zh_Hans: Fetching data from the database using natural language.
+          label:
+            en_US: SQL string
+            ja_JP: SQL string
+            pt_BR: SQL string
+            zh_Hans: 待执行的 SQL 语句
+          llm_description: Fetching data from the database using natural language.
+          max: null
+          min: null
+          name: sql
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: json
+          form: llm
+          human_description:
+            en_US: result_format
+            ja_JP: result_format
+            pt_BR: result_format
+            zh_Hans: 返回数据格式
+          label:
+            en_US: result_format
+            ja_JP: result_format
+            pt_BR: result_format
+            zh_Hans: 返回数据格式
+          llm_description: result_format
+          max: null
+          min: null
+          name: result_format
+          options:
+          - icon: ''
+            label:
+              en_US: JSON
+              ja_JP: JSON
+              pt_BR: JSON
+              zh_Hans: JSON
+            value: json
+          - icon: ''
+            label:
+              en_US: TEXT
+              ja_JP: TEXT
+              pt_BR: TEXT
+              zh_Hans: TEXT
+            value: text
+          - icon: ''
+            label:
+              en_US: CSV
+              ja_JP: CSV
+              pt_BR: CSV
+              zh_Hans: CSV
+            value: csv
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          db_name: ''
+          db_type: ''
+          host: ''
+          password: ''
+          port: ''
+          result_format: ''
+          schema: ''
+          sql: ''
+          username: ''
+        plugin_id: jaguarliuu/rookie_text2data
+        plugin_unique_identifier: jaguarliuu/rookie_text2data:1.0.3@3041f4cfe193deb03f716fedfd2e7dae1601021cf39f94c462af8d6babd1e3fd
+        provider_icon: https://cloud.dify.ai/console/api/workspaces/current/plugin/icon?tenant_id=b005d3c3-7376-4ee8-835c-092adeee3cbe&filename=9585e221a1e207d23f39a174ec40644ef73683bd5cbb96d80f0e2656a0bfc618.svg
+        provider_id: jaguarliuu/rookie_text2data/rookie_text2data
+        provider_name: jaguarliuu/rookie_text2data/rookie_text2data
+        provider_type: builtin
+        selected: false
+        title: rookie_excute_sql
+        tool_configurations: {}
+        tool_description: sql 执行器
+        tool_label: rookie_excute_sql
+        tool_name: rookie_excute_sql
+        tool_node_version: '2'
+        tool_parameters:
+          db_name:
+            type: mixed
+            value: '{{#env.database#}}'
+          db_type:
+            type: constant
+            value: mysql
+          host:
+            type: mixed
+            value: '{{#env.host#}}'
+          password:
+            type: mixed
+            value: '{{#env.password#}}'
+          port:
+            type: constant
+            value: 3306
+          result_format:
+            type: constant
+            value: text
+          schema:
+            type: mixed
+            value: ''
+          sql:
+            type: mixed
+            value: '{{#1772614185469.text#}}'
+          username:
+            type: mixed
+            value: '{{#env.username#}}'
+        type: tool
+      height: 51
+      id: '1772614190380'
+      position:
+        x: 1044
+        y: 1526.3333333333335
+      positionAbsolute:
+        x: 1044
+        y: 1526.3333333333335
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: '{{#1772614510282.text#}}'
+        selected: false
+        title: 直接回复 7
+        type: answer
+        variables: []
+      height: 102
+      id: '1772614193029'
+      position:
+        x: 1726
+        y: 1526.3333333333335
+      positionAbsolute:
+        x: 1726
+        y: 1526.3333333333335
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1772614190380'
+          - text
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-3.5-flash
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: 1459c26b-63a3-44c0-8d1a-364190942220
+          role: system
+          text: "# 一、 角色人设（Role）\n您是一位专业的数据查询师，擅长数据整理，具有清晰的逻辑思维和简洁表达能力。\n\n# 二、 背景（Background）\n\
+            用户提供了从数据库中查询到的原始数据，这些数据可能存在格式不统一、字段缺失、重复记录等问题，需要经过专业整理后才能有效展示。\n\n# 三、\
+            \ 任务目标（Task）\n1. 对原始数据进行归纳和整理\n2. 按照正确的逻辑对数据进行分类和排序\n3. 数据展示突出关键信息和数据洞察\n\
+            4. 提供易于理解的数据展示\n\n# 四、 限制提示（Limit）\n1. 不得随意删除重要数据\n2. 避免使用过于复杂或专业的统计术语\n\
+            3. 不得篡改原始数据的真实值\n4. 避免展示过多冗余信息，保持简洁明了\n5. 不得泄露敏感数据或个人隐私信息\n\n# 五、 输出格式要求（Example）\n\
+            \ 数据概览：简要说明数据内容即可\n\n原始数据{{#context#}}"
+        selected: false
+        structured_output_enabled: false
+        title: 数据查询
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1772614510282'
+      position:
+        x: 1385
+        y: 1519.3333333333335
+      positionAbsolute:
+        x: 1385
+        y: 1519.3333333333335
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: '# 一、 角色人设（Role）
+
+              你是一位专业的数据分析师，具备数据整理、清洗和可视化能力，能够从原始数据中提取关键信息并转化为直观的可视化展示。
+
+
+              # 二、 背景（Background）
+
+              用户已从数据库中查询到一批原始数据，这些数据可能包含多个字段、存在缺失值或格式不一致的情况，需要经过整理后生成可视化图表。
+
+
+              # 三、 任务目标（Task）
+
+              #工作流程
+
+              1. 数据分析
+
+              按照合理的规则进行数据分析整理总结
+
+              2. 分析 & 可视化
+
+              至少生成 1 幅图表（柱状 / 折线 / 饼图任选其1或以上）
+
+              可调用工具：“generate_pie_chart" | "generate_column_chart" | "generate_line_chart"
+
+
+              # 四、 限制提示（Limit）
+
+              1. 避免使用过于复杂的图表类型，确保可视化结果易于理解
+
+              2. 不要忽略数据质量问题，必须进行必要的数据清洗
+
+              3. 避免在可视化中使用过多颜色或元素，保持简洁明了
+
+              4. 不要遗漏关键数据的标注和说明
+
+              5.必须进行总结和图表生成，不管数据多少
+
+
+              # 五、 输出格式要求（Example）
+
+              请按照以下格式输出：
+
+              1. 数据概况总结（不要输出字段名称，不要分点，一小段话就行）
+
+              2. 展示生成的图表'
+          mcp_servers_config:
+            type: constant
+            value: "{\n  \"mcpServers\": {\n    \"mcp-server-chart\": {\n      \"\
+              type\": \"sse\",\n      \"url\": \"https://mcp-.api-inference.modelscope.net/sse\"\
+              \n    }\n  }\n}"
+          model:
+            type: constant
+            value:
+              completion_params: {}
+              mode: chat
+              model: gpt-5-chat-latest
+              model_type: llm
+              provider: langgenius/openai/openai
+              type: model-selector
+          query:
+            type: constant
+            value: '{{#1772614123166.json#}}'
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: 生成一个柱状图，对不同类别进行数值比较，例如，当数值接近时，由于人眼对于高度的感知优于其他视觉元素（如面积、角度等），因此，使用柱状图更加合适。
+              parameters:
+                axisXTitle:
+                  auto: 1
+                  value: null
+                axisYTitle:
+                  auto: 1
+                  value: null
+                data:
+                  auto: 1
+                  value: null
+                group:
+                  auto: 1
+                  value: null
+                stack:
+                  auto: 1
+                  value: null
+                title:
+                  auto: 1
+                  value: null
+              provider_name: antv/visualization/visualization
+              provider_show_name: antv/visualization/visualization
+              settings:
+                height:
+                  value:
+                    type: constant
+                    value: 400
+                style:
+                  value:
+                    type: mixed
+                    value: null
+                theme:
+                  value:
+                    type: constant
+                    value: default
+                width:
+                  value:
+                    type: constant
+                    value: 600
+              tool_description: 生成一个柱状图，对不同类别进行数值比较，例如，当数值接近时，由于人眼对于高度的感知优于其他视觉元素（如面积、角度等），因此，使用柱状图更加合适。
+              tool_label: 生成柱状图
+              tool_name: generate_column_chart
+              type: builtin
+            - enabled: true
+              extra:
+                description: 生成一个饼图来展示各部分的比例，例如市场占有率和预算分配。
+              parameters:
+                data:
+                  auto: 1
+                  value: null
+                innerRadius:
+                  auto: 1
+                  value: null
+                title:
+                  auto: 1
+                  value: null
+              provider_name: antv/visualization/visualization
+              provider_show_name: antv/visualization/visualization
+              settings:
+                height:
+                  value:
+                    type: constant
+                    value: 400
+                style:
+                  value:
+                    type: mixed
+                    value: null
+                theme:
+                  value:
+                    type: constant
+                    value: default
+                width:
+                  value:
+                    type: constant
+                    value: 600
+              tool_description: 生成一个饼图来展示各部分的比例，例如市场占有率和预算分配。
+              tool_label: 生成饼图
+              tool_name: generate_pie_chart
+              type: builtin
+            - enabled: true
+              extra:
+                description: 生成一个折线图来显示随时间变化的趋势，例如，2000 年到 2016 年苹果电脑销量与苹果公司利润比例的变化。
+              parameters:
+                axisXTitle:
+                  auto: 1
+                  value: null
+                axisYTitle:
+                  auto: 1
+                  value: null
+                data:
+                  auto: 1
+                  value: null
+                title:
+                  auto: 1
+                  value: null
+              provider_name: antv/visualization/visualization
+              provider_show_name: antv/visualization/visualization
+              settings:
+                height:
+                  value:
+                    type: constant
+                    value: 400
+                style:
+                  value:
+                    type: mixed
+                    value: null
+                theme:
+                  value:
+                    type: constant
+                    value: default
+                width:
+                  value:
+                    type: constant
+                    value: 600
+              tool_description: 生成一个折线图来显示随时间变化的趋势，例如，2000 年到 2016 年苹果电脑销量与苹果公司利润比例的变化。
+              tool_label: 生成折线图
+              tool_name: generate_line_chart
+              type: builtin
+        agent_strategy_label: ReAct (支持 MCP 工具)
+        agent_strategy_name: mcp_sse_ReAct
+        agent_strategy_provider_name: junjiem/mcp_see_agent/mcp_see_agent
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          window:
+            enabled: false
+            size: 50
+        meta:
+          minimum_dify_version: null
+          version: 0.0.1
+        output_schema: {}
+        plugin_unique_identifier: junjiem/mcp_see_agent:0.2.4@82caf96890992e9dec2c43c3fac82bfce8bd18a41de7c2b6948151b2d7f7b7a2
+        selected: false
+        title: 数据可视化分析
+        tool_node_version: '2'
+        type: agent
+      height: 187
+      id: '1772632185101'
+      position:
+        x: 1385
+        y: 1252.3333333333335
+      positionAbsolute:
+        x: 1385
+        y: 1252.3333333333335
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: '{{#1772632185101.text#}}'
+        selected: false
+        title: 直接回复 6
+        type: answer
+        variables: []
+      height: 102
+      id: '1772635507739'
+      position:
+        x: 1726
+        y: 1326
+      positionAbsolute:
+        x: 1726
+        y: 1326
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        is_team_authorization: false
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Text description of the image you want to generate
+            ja_JP: Text description of the image you want to generate
+            pt_BR: Text description of the image you want to generate
+            zh_Hans: 您想要生成的图像的文本描述
+          label:
+            en_US: Prompt
+            ja_JP: Prompt
+            pt_BR: Prompt
+            zh_Hans: 提示词
+          llm_description: Text description of the image to generate
+          max: null
+          min: null
+          name: prompt
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: 2048x2048
+          form: form
+          human_description:
+            en_US: Size of the generated image
+            ja_JP: Size of the generated image
+            pt_BR: Size of the generated image
+            zh_Hans: 生成图像的尺寸
+          label:
+            en_US: Image Size
+            ja_JP: Image Size
+            pt_BR: Image Size
+            zh_Hans: 图像尺寸
+          llm_description: Size of the generated image
+          max: null
+          min: null
+          name: size
+          options:
+          - icon: ''
+            label:
+              en_US: 1:1 (2048x2048)
+              ja_JP: 1:1 (2048x2048)
+              pt_BR: 1:1 (2048x2048)
+              zh_Hans: 1:1 (2048x2048)
+            value: 2048x2048
+          - icon: ''
+            label:
+              en_US: 4:3 (2304x1728)
+              ja_JP: 4:3 (2304x1728)
+              pt_BR: 4:3 (2304x1728)
+              zh_Hans: 4:3 (2304x1728)
+            value: 2304x1728
+          - icon: ''
+            label:
+              en_US: 3:4 (1728x2304)
+              ja_JP: 3:4 (1728x2304)
+              pt_BR: 3:4 (1728x2304)
+              zh_Hans: 3:4 (1728x2304)
+            value: 1728x2304
+          - icon: ''
+            label:
+              en_US: 16:9 (2560x1440)
+              ja_JP: 16:9 (2560x1440)
+              pt_BR: 16:9 (2560x1440)
+              zh_Hans: 16:9 (2560x1440)
+            value: 2560x1440
+          - icon: ''
+            label:
+              en_US: 9:16 (1440x2560)
+              ja_JP: 9:16 (1440x2560)
+              pt_BR: 9:16 (1440x2560)
+              zh_Hans: 9:16 (1440x2560)
+            value: 1440x2560
+          - icon: ''
+            label:
+              en_US: 3:2 (2496x1664)
+              ja_JP: 3:2 (2496x1664)
+              pt_BR: 3:2 (2496x1664)
+              zh_Hans: 3:2 (2496x1664)
+            value: 2496x1664
+          - icon: ''
+            label:
+              en_US: 2:3 (1664x2496)
+              ja_JP: 2:3 (1664x2496)
+              pt_BR: 2:3 (1664x2496)
+              zh_Hans: 2:3 (1664x2496)
+            value: 1664x2496
+          - icon: ''
+            label:
+              en_US: 21:9 (3024x1296)
+              ja_JP: 21:9 (3024x1296)
+              pt_BR: 21:9 (3024x1296)
+              zh_Hans: 21:9 (3024x1296)
+            value: 3024x1296
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: 'true'
+          form: form
+          human_description:
+            en_US: Whether to add 'AI Generated' watermark to the image
+            ja_JP: Whether to add 'AI Generated' watermark to the image
+            pt_BR: Whether to add 'AI Generated' watermark to the image
+            zh_Hans: 是否在图像上添加'AI生成'水印
+          label:
+            en_US: Watermark
+            ja_JP: Watermark
+            pt_BR: Watermark
+            zh_Hans: 水印
+          llm_description: Whether to add 'AI Generated' watermark to the image
+          max: null
+          min: null
+          name: watermark
+          options:
+          - icon: ''
+            label:
+              en_US: Enabled
+              ja_JP: Enabled
+              pt_BR: Enabled
+              zh_Hans: 启用
+            value: 'true'
+          - icon: ''
+            label:
+              en_US: Disabled
+              ja_JP: Disabled
+              pt_BR: Disabled
+              zh_Hans: 禁用
+            value: 'false'
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: doubao-seedream-4-5-251128
+          form: form
+          human_description:
+            en_US: Choose the Seedream model version to use
+            ja_JP: Choose the Seedream model version to use
+            pt_BR: Choose the Seedream model version to use
+            zh_Hans: 选择要使用的Seedream模型版本
+          label:
+            en_US: Model Version
+            ja_JP: Model Version
+            pt_BR: Model Version
+            zh_Hans: 模型版本
+          llm_description: Choose the Seedream model version to use
+          max: null
+          min: null
+          name: model
+          options:
+          - icon: ''
+            label:
+              en_US: Seedream4.0
+              ja_JP: Seedream4.0
+              pt_BR: Seedream4.0
+              zh_Hans: Seedream4.0
+            value: doubao-seedream-4-0-250828
+          - icon: ''
+            label:
+              en_US: Seedream4.5
+              ja_JP: Seedream4.5
+              pt_BR: Seedream4.5
+              zh_Hans: Seedream4.5
+            value: doubao-seedream-4-5-251128
+          - icon: ''
+            label:
+              en_US: Seedream5.0 Lite
+              ja_JP: Seedream5.0 Lite
+              pt_BR: Seedream5.0 Lite
+              zh_Hans: Seedream5.0 Lite
+            value: doubao-seedream-5-0-260128
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          model: ''
+          prompt: ''
+          size: ''
+          watermark: ''
+        plugin_id: sawyer-shi/seedream_aigc
+        plugin_unique_identifier: sawyer-shi/seedream_aigc:0.0.2@5d7eceb101e80337ac5885d1c6214bad7cb9989edbfc7174f97abedd2489f465
+        provider_icon: https://cloud.dify.ai/console/api/workspaces/current/plugin/icon?tenant_id=b005d3c3-7376-4ee8-835c-092adeee3cbe&filename=9638639a259e524d8a12d8fa29d692c7b226cc88124ff4fb1eb2d31d0c9f88d3.svg
+        provider_id: sawyer-shi/seedream_aigc/seedream_aigc
+        provider_name: sawyer-shi/seedream_aigc/seedream_aigc
+        provider_type: builtin
+        selected: false
+        title: Seedream-文生图
+        tool_configurations:
+          model:
+            type: constant
+            value: doubao-seedream-4-5-251128
+          size:
+            type: constant
+            value: 2048x2048
+          watermark:
+            type: constant
+            value: 'true'
+        tool_description: 使用Seedream模型根据文本描述生成图像
+        tool_label: Seedream-文生图
+        tool_name: text2image
+        tool_node_version: '2'
+        tool_parameters:
+          prompt:
+            type: mixed
+            value: '{{#sys.query#}}'
+        type: tool
+      height: 139
+      id: '1779682609568'
+      position:
+        x: 703
+        y: 349
+      positionAbsolute:
+        x: 703
+        y: 349
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Text description of the video you want to generate (max 500 chars)
+            ja_JP: Text description of the video you want to generate (max 500 chars)
+            pt_BR: Text description of the video you want to generate (max 500 chars)
+            zh_Hans: 您想要生成的视频的文本描述（最多500字）
+          label:
+            en_US: Prompt
+            ja_JP: Prompt
+            pt_BR: Prompt
+            zh_Hans: 提示词
+          llm_description: Text description of the video to generate (max 500 chars)
+          max: null
+          min: null
+          name: prompt
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: doubao-seedance-1-5-pro-251215
+          form: form
+          human_description:
+            en_US: Model for video generation
+            ja_JP: Model for video generation
+            pt_BR: Model for video generation
+            zh_Hans: 视频生成模型
+          label:
+            en_US: Model
+            ja_JP: Model
+            pt_BR: Model
+            zh_Hans: 模型
+          llm_description: Model for video generation
+          max: null
+          min: null
+          name: model
+          options:
+          - icon: ''
+            label:
+              en_US: Seedance 1.0 Pro
+              ja_JP: Seedance 1.0 Pro
+              pt_BR: Seedance 1.0 Pro
+              zh_Hans: Seedance 1.0 Pro
+            value: doubao-seedance-1-0-pro-250528
+          - icon: ''
+            label:
+              en_US: Seedance 1.0 Pro Fast
+              ja_JP: Seedance 1.0 Pro Fast
+              pt_BR: Seedance 1.0 Pro Fast
+              zh_Hans: Seedance 1.0 Pro Fast
+            value: doubao-seedance-1-0-pro-fast-251015
+          - icon: ''
+            label:
+              en_US: Seedance 1.5 Pro
+              ja_JP: Seedance 1.5 Pro
+              pt_BR: Seedance 1.5 Pro
+              zh_Hans: Seedance 1.5 Pro
+            value: doubao-seedance-1-5-pro-251215
+          - icon: ''
+            label:
+              en_US: Seedance 2.0
+              ja_JP: Seedance 2.0
+              pt_BR: Seedance 2.0
+              zh_Hans: Seedance 2.0
+            value: doubao-seedance-2-0-260128
+          - icon: ''
+            label:
+              en_US: Seedance 2.0 Fast
+              ja_JP: Seedance 2.0 Fast
+              pt_BR: Seedance 2.0 Fast
+              zh_Hans: Seedance 2.0 Fast
+            value: doubao-seedance-2-0-fast-260128
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: 720p
+          form: form
+          human_description:
+            en_US: Video resolution
+            ja_JP: Video resolution
+            pt_BR: Video resolution
+            zh_Hans: 视频分辨率
+          label:
+            en_US: Resolution
+            ja_JP: Resolution
+            pt_BR: Resolution
+            zh_Hans: 分辨率
+          llm_description: Video resolution
+          max: null
+          min: null
+          name: resolution
+          options:
+          - icon: ''
+            label:
+              en_US: 480p
+              ja_JP: 480p
+              pt_BR: 480p
+              zh_Hans: 480p
+            value: 480p
+          - icon: ''
+            label:
+              en_US: 720p
+              ja_JP: 720p
+              pt_BR: 720p
+              zh_Hans: 720p
+            value: 720p
+          - icon: ''
+            label:
+              en_US: 1080p
+              ja_JP: 1080p
+              pt_BR: 1080p
+              zh_Hans: 1080p
+            value: 1080p
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: '16:9'
+          form: form
+          human_description:
+            en_US: Video aspect ratio
+            ja_JP: Video aspect ratio
+            pt_BR: Video aspect ratio
+            zh_Hans: 视频宽高比
+          label:
+            en_US: Aspect Ratio
+            ja_JP: Aspect Ratio
+            pt_BR: Aspect Ratio
+            zh_Hans: 宽高比
+          llm_description: Video aspect ratio
+          max: null
+          min: null
+          name: ratio
+          options:
+          - icon: ''
+            label:
+              en_US: '16:9'
+              ja_JP: '16:9'
+              pt_BR: '16:9'
+              zh_Hans: '16:9'
+            value: '16:9'
+          - icon: ''
+            label:
+              en_US: '4:3'
+              ja_JP: '4:3'
+              pt_BR: '4:3'
+              zh_Hans: '4:3'
+            value: '4:3'
+          - icon: ''
+            label:
+              en_US: '1:1'
+              ja_JP: '1:1'
+              pt_BR: '1:1'
+              zh_Hans: '1:1'
+            value: '1:1'
+          - icon: ''
+            label:
+              en_US: '3:4'
+              ja_JP: '3:4'
+              pt_BR: '3:4'
+              zh_Hans: '3:4'
+            value: '3:4'
+          - icon: ''
+            label:
+              en_US: '9:16'
+              ja_JP: '9:16'
+              pt_BR: '9:16'
+              zh_Hans: '9:16'
+            value: '9:16'
+          - icon: ''
+            label:
+              en_US: '21:9'
+              ja_JP: '21:9'
+              pt_BR: '21:9'
+              zh_Hans: '21:9'
+            value: '21:9'
+          - icon: ''
+            label:
+              en_US: Adaptive
+              ja_JP: Adaptive
+              pt_BR: Adaptive
+              zh_Hans: 自适应
+            value: adaptive
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: 5
+          form: form
+          human_description:
+            en_US: Video duration in seconds (2-15, -1 only for Seedance 1.5/2.0 series)
+            ja_JP: Video duration in seconds (2-15, -1 only for Seedance 1.5/2.0 series)
+            pt_BR: Video duration in seconds (2-15, -1 only for Seedance 1.5/2.0 series)
+            zh_Hans: 视频时长(2-15秒，-1 仅支持 Seedance 1.5/2.0 系列)
+          label:
+            en_US: Duration (seconds)
+            ja_JP: Duration (seconds)
+            pt_BR: Duration (seconds)
+            zh_Hans: 时长(秒)
+          llm_description: Video duration in seconds (2-15, -1 only for Seedance 1.5/2.0
+            series)
+          max: 15
+          min: -1
+          name: duration
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        - auto_generate: null
+          default: -1
+          form: form
+          human_description:
+            en_US: Random seed for reproducible results (-1 for random)
+            ja_JP: Random seed for reproducible results (-1 for random)
+            pt_BR: Random seed for reproducible results (-1 for random)
+            zh_Hans: 随机种子，用于生成可重复的结果(-1为随机)
+          label:
+            en_US: Seed
+            ja_JP: Seed
+            pt_BR: Seed
+            zh_Hans: 种子
+          llm_description: Random seed for reproducible results (-1 for random)
+          max: 4294967295
+          min: -1
+          name: seed
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        - auto_generate: null
+          default: 'false'
+          form: form
+          human_description:
+            en_US: Whether to fix camera position
+            ja_JP: Whether to fix camera position
+            pt_BR: Whether to fix camera position
+            zh_Hans: 是否固定摄像头位置
+          label:
+            en_US: Fixed Camera
+            ja_JP: Fixed Camera
+            pt_BR: Fixed Camera
+            zh_Hans: 固定摄像头
+          llm_description: Whether to fix camera position
+          max: null
+          min: null
+          name: camera_fixed
+          options:
+          - icon: ''
+            label:
+              en_US: Enabled
+              ja_JP: Enabled
+              pt_BR: Enabled
+              zh_Hans: 启用
+            value: 'true'
+          - icon: ''
+            label:
+              en_US: Disabled
+              ja_JP: Disabled
+              pt_BR: Disabled
+              zh_Hans: 禁用
+            value: 'false'
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: 'true'
+          form: form
+          human_description:
+            en_US: Whether to add watermark to the video
+            ja_JP: Whether to add watermark to the video
+            pt_BR: Whether to add watermark to the video
+            zh_Hans: 是否在视频中添加水印
+          label:
+            en_US: Watermark
+            ja_JP: Watermark
+            pt_BR: Watermark
+            zh_Hans: 水印
+          llm_description: Whether to add watermark to the video
+          max: null
+          min: null
+          name: watermark
+          options:
+          - icon: ''
+            label:
+              en_US: Enabled
+              ja_JP: Enabled
+              pt_BR: Enabled
+              zh_Hans: 启用
+            value: 'true'
+          - icon: ''
+            label:
+              en_US: Disabled
+              ja_JP: Disabled
+              pt_BR: Disabled
+              zh_Hans: 禁用
+            value: 'false'
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: 'true'
+          form: form
+          human_description:
+            en_US: Whether to generate synchronized audio (Seedance 1.5 Pro / 2.0
+              / 2.0 Fast)
+            ja_JP: Whether to generate synchronized audio (Seedance 1.5 Pro / 2.0
+              / 2.0 Fast)
+            pt_BR: Whether to generate synchronized audio (Seedance 1.5 Pro / 2.0
+              / 2.0 Fast)
+            zh_Hans: 是否生成同步音频（Seedance 1.5 Pro / 2.0 / 2.0 Fast）
+          label:
+            en_US: Audio
+            ja_JP: Audio
+            pt_BR: Audio
+            zh_Hans: 音频
+          llm_description: Whether to generate synchronized audio
+          max: null
+          min: null
+          name: generate_audio
+          options:
+          - icon: ''
+            label:
+              en_US: Enabled
+              ja_JP: Enabled
+              pt_BR: Enabled
+              zh_Hans: 启用
+            value: 'true'
+          - icon: ''
+            label:
+              en_US: Disabled
+              ja_JP: Disabled
+              pt_BR: Disabled
+              zh_Hans: 禁用
+            value: 'false'
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: 'false'
+          form: form
+          human_description:
+            en_US: Generate draft video (Seedance 1.5 pro only)
+            ja_JP: Generate draft video (Seedance 1.5 pro only)
+            pt_BR: Generate draft video (Seedance 1.5 pro only)
+            zh_Hans: 生成样片视频（仅Seedance 1.5 pro）
+          label:
+            en_US: Draft Mode
+            ja_JP: Draft Mode
+            pt_BR: Draft Mode
+            zh_Hans: 样片模式
+          llm_description: Generate draft video
+          max: null
+          min: null
+          name: draft
+          options:
+          - icon: ''
+            label:
+              en_US: Enabled
+              ja_JP: Enabled
+              pt_BR: Enabled
+              zh_Hans: 启用
+            value: 'true'
+          - icon: ''
+            label:
+              en_US: Disabled
+              ja_JP: Disabled
+              pt_BR: Disabled
+              zh_Hans: 禁用
+            value: 'false'
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: 'false'
+          form: form
+          human_description:
+            en_US: Return last frame image in query
+            ja_JP: Return last frame image in query
+            pt_BR: Return last frame image in query
+            zh_Hans: 查询结果返回尾帧图像
+          label:
+            en_US: Return Last Frame
+            ja_JP: Return Last Frame
+            pt_BR: Return Last Frame
+            zh_Hans: 返回尾帧
+          llm_description: Return last frame image
+          max: null
+          min: null
+          name: return_last_frame
+          options:
+          - icon: ''
+            label:
+              en_US: Enabled
+              ja_JP: Enabled
+              pt_BR: Enabled
+              zh_Hans: 启用
+            value: 'true'
+          - icon: ''
+            label:
+              en_US: Disabled
+              ja_JP: Disabled
+              pt_BR: Disabled
+              zh_Hans: 禁用
+            value: 'false'
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: default
+          form: form
+          human_description:
+            en_US: 'Service tier: default or flex (Seedance 2.0 series supports default
+              only)'
+            ja_JP: 'Service tier: default or flex (Seedance 2.0 series supports default
+              only)'
+            pt_BR: 'Service tier: default or flex (Seedance 2.0 series supports default
+              only)'
+            zh_Hans: 服务等级：default 或 flex（Seedance 2.0 系列仅支持 default）
+          label:
+            en_US: Service Tier
+            ja_JP: Service Tier
+            pt_BR: Service Tier
+            zh_Hans: 服务等级
+          llm_description: Service tier
+          max: null
+          min: null
+          name: service_tier
+          options:
+          - icon: ''
+            label:
+              en_US: Default
+              ja_JP: Default
+              pt_BR: Default
+              zh_Hans: 默认
+            value: default
+          - icon: ''
+            label:
+              en_US: Flex
+              ja_JP: Flex
+              pt_BR: Flex
+              zh_Hans: 离线
+            value: flex
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          camera_fixed: ''
+          draft: ''
+          duration: ''
+          generate_audio: ''
+          model: ''
+          prompt: ''
+          ratio: ''
+          resolution: ''
+          return_last_frame: ''
+          seed: ''
+          service_tier: ''
+          watermark: ''
+        plugin_id: sawyer-shi/seedream_aigc
+        plugin_unique_identifier: sawyer-shi/seedream_aigc:0.0.2@5d7eceb101e80337ac5885d1c6214bad7cb9989edbfc7174f97abedd2489f465
+        provider_icon: https://cloud.dify.ai/console/api/workspaces/current/plugin/icon?tenant_id=b005d3c3-7376-4ee8-835c-092adeee3cbe&filename=9638639a259e524d8a12d8fa29d692c7b226cc88124ff4fb1eb2d31d0c9f88d3.svg
+        provider_id: sawyer-shi/seedream_aigc/seedream_aigc
+        provider_name: sawyer-shi/seedream_aigc/seedream_aigc
+        provider_type: builtin
+        selected: false
+        title: Seedance-文生视频
+        tool_configurations:
+          camera_fixed:
+            type: constant
+            value: 'false'
+          draft:
+            type: constant
+            value: 'false'
+          duration:
+            type: constant
+            value: 5
+          generate_audio:
+            type: constant
+            value: 'true'
+          model:
+            type: constant
+            value: doubao-seedance-1-5-pro-251215
+          ratio:
+            type: constant
+            value: '16:9'
+          resolution:
+            type: constant
+            value: 720p
+          return_last_frame:
+            type: constant
+            value: 'false'
+          seed:
+            type: constant
+            value: -1
+          service_tier:
+            type: constant
+            value: default
+          watermark:
+            type: constant
+            value: 'true'
+        tool_description: 使用Seedance模型根据文本描述生成视频
+        tool_label: Seedance-文生视频
+        tool_name: text_2_video
+        tool_node_version: '2'
+        tool_parameters:
+          prompt:
+            type: mixed
+            value: '{{#sys.query#}}'
+        type: tool
+      height: 347
+      id: '1779683236178'
+      position:
+        x: 703
+        y: 568
+      positionAbsolute:
+        x: 703
+        y: 568
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        instruction: 提取出任务id
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemini-3.5-flash
+          provider: langgenius/gemini/google
+        parameters:
+        - description: 任务ID
+          name: task_id
+          required: true
+          type: string
+        query:
+        - '1779683236178'
+        - text
+        reasoning_mode: prompt
+        selected: false
+        title: 参数提取器
+        type: parameter-extractor
+        vision:
+          enabled: false
+      height: 87
+      id: '1779684902178'
+      position:
+        x: 1044
+        y: 755.8333333333334
+      positionAbsolute:
+        x: 1044
+        y: 755.8333333333334
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        break_conditions:
+        - comparison_operator: is
+          id: de388456-581c-4c1a-aa10-ee6f70b4a146
+          value: '1'
+          varType: string
+          variable_selector:
+          - '1779685907885'
+          - a
+        error_handle_mode: terminated
+        height: 265
+        logical_operator: and
+        loop_count: 30
+        loop_variables:
+        - id: 8c2ce733-a479-421b-8221-3b0b395d05be
+          label: a
+          value: '1'
+          value_type: constant
+          var_type: number
+        selected: true
+        start_node_id: 1779685907885start
+        title: 循环
+        type: loop
+        width: 1127
+      height: 265
+      id: '1779685907885'
+      position:
+        x: 1385
+        y: 681.3333333333334
+      positionAbsolute:
+        x: 1385
+        y: 681.3333333333334
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 1127
+      zIndex: 1
+    - data:
+        desc: ''
+        isInLoop: true
+        selected: false
+        title: ''
+        type: loop-start
+      draggable: false
+      height: 48
+      id: 1779685907885start
+      parentId: '1779685907885'
+      position:
+        x: 60
+        y: 65.5
+      positionAbsolute:
+        x: 1445
+        y: 746.8333333333334
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-loop-start
+      width: 44
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        is_team_authorization: true
+        loop_id: '1779685907885'
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The ID of the video generation task to query
+            ja_JP: The ID of the video generation task to query
+            pt_BR: The ID of the video generation task to query
+            zh_Hans: 要查询的视频生成任务的ID
+          label:
+            en_US: Task ID
+            ja_JP: Task ID
+            pt_BR: Task ID
+            zh_Hans: 任务ID
+          llm_description: The ID of the video generation task to query
+          max: null
+          min: null
+          name: task_id
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: 'true'
+          form: form
+          human_description:
+            en_US: Download the video file when available
+            ja_JP: Download the video file when available
+            pt_BR: Download the video file when available
+            zh_Hans: 当视频可用时下载视频文件
+          label:
+            en_US: Download Video
+            ja_JP: Download Video
+            pt_BR: Download Video
+            zh_Hans: 下载视频
+          llm_description: Download the video file when available
+          max: null
+          min: null
+          name: download_video
+          options:
+          - icon: ''
+            label:
+              en_US: Enabled
+              ja_JP: Enabled
+              pt_BR: Enabled
+              zh_Hans: 启用
+            value: 'true'
+          - icon: ''
+            label:
+              en_US: Disabled
+              ja_JP: Disabled
+              pt_BR: Disabled
+              zh_Hans: 禁用
+            value: 'false'
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          download_video: ''
+          task_id: ''
+        plugin_id: sawyer-shi/seedream_aigc
+        plugin_unique_identifier: sawyer-shi/seedream_aigc:0.0.2@5d7eceb101e80337ac5885d1c6214bad7cb9989edbfc7174f97abedd2489f465
+        provider_icon: https://cloud.dify.ai/console/api/workspaces/current/plugin/icon?tenant_id=b005d3c3-7376-4ee8-835c-092adeee3cbe&filename=9638639a259e524d8a12d8fa29d692c7b226cc88124ff4fb1eb2d31d0c9f88d3.svg
+        provider_id: sawyer-shi/seedream_aigc/seedream_aigc
+        provider_name: sawyer-shi/seedream_aigc/seedream_aigc
+        provider_type: builtin
+        selected: false
+        title: Seedance-视频结果查询
+        tool_configurations:
+          download_video:
+            type: constant
+            value: 'true'
+        tool_description: 使用Seedance模型查询视频生成任务的状态和结果
+        tool_label: Seedance-视频结果查询
+        tool_name: video_query
+        tool_node_version: '2'
+        tool_parameters:
+          task_id:
+            type: mixed
+            value: '{{#1779684902178.task_id#}}'
+        type: tool
+      height: 87
+      id: '1779685925567'
+      parentId: '1779685907885'
+      position:
+        x: 505
+        y: 62.5
+      positionAbsolute:
+        x: 1890
+        y: 743.8333333333334
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        answer: '{{#1779685925567.text#}}
+
+          {{#1779685925567.files#}}'
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1779685907885'
+        selected: false
+        title: 直接回复 8
+        type: answer
+        variables: []
+      height: 121
+      id: '1779685936065'
+      parentId: '1779685907885'
+      position:
+        x: 826
+        y: 60
+      positionAbsolute:
+        x: 2211
+        y: 741.3333333333334
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        is_team_authorization: true
+        loop_id: '1779685907885'
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The number of seconds to wait
+            ja_JP: The number of seconds to wait
+            pt_BR: The number of seconds to wait
+            zh_Hans: 等待的秒数
+          label:
+            en_US: Seconds
+            ja_JP: Seconds
+            pt_BR: Seconds
+            zh_Hans: 秒数
+          llm_description: The number of seconds to pause execution
+          max: null
+          min: null
+          name: seconds
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: number
+        params:
+          seconds: ''
+        plugin_id: agimaster/justwait
+        plugin_unique_identifier: agimaster/justwait:0.0.2@1cc2d5e7fbd6a829396c8a51947924f799f9566071bf8499c4e2a9f75ad3330f
+        provider_icon: https://cloud.dify.ai/console/api/workspaces/current/plugin/icon?tenant_id=b005d3c3-7376-4ee8-835c-092adeee3cbe&filename=a260a47b34be7b6bca428d8e8617d3ad9389cde761097b839c16a4e3ff378fbc.svg
+        provider_id: agimaster/justwait/justwait
+        provider_name: agimaster/justwait/justwait
+        provider_type: builtin
+        selected: false
+        title: 等待
+        tool_configurations: {}
+        tool_description: 等待指定的秒数，类似于Python的time.sleep()函数
+        tool_label: 等待
+        tool_name: wait
+        tool_node_version: '2'
+        tool_parameters:
+          seconds:
+            type: constant
+            value: 30
+        type: tool
+      height: 51
+      id: '1779686165092'
+      parentId: '1779685907885'
+      position:
+        x: 184
+        y: 72
+      positionAbsolute:
+        x: 1569
+        y: 753.3333333333334
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    viewport:
+      x: 103.92455098344271
+      y: 63.02949031913545
+      zoom: 0.4320356244143003
+  rag_pipeline_variables: []
