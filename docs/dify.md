@@ -61,33 +61,33 @@ Dify 对模型高度中立且兼容性强：无论开源或商业模型，用户
 - 数据查询与可视化分析
 - MCP 工具集成（高德地图）
 
-使用到的插件![image-20260525134205863](../AppData/Roaming/Typora/typora-user-images/image-20260525134205863.png)
+使用到的插件![image-20260525134205863](assets/image-20260525134205863.png)
 
 整个智能体的编排架构
 
-![image-20260525134428029](../AppData/Roaming/Typora/typora-user-images/image-20260525134428029.png)
+![image-20260525134428029](assets/image-20260525134428029.png)
 
 ### 节点和工具
 
-<img src="../AppData/Roaming/Typora/typora-user-images/image-20260525134553264.png" alt="image-20260525134553264" style="zoom:50%;" />
+<img src="assets/image-20260525134553264.png" alt="image-20260525134553264" style="zoom:50%;" />
 
-<img src="../AppData/Roaming/Typora/typora-user-images/image-20260525134644154.png" alt="image-20260525134644154" style="zoom:33%;" />
+<img src="assets/image-20260525134644154.png" alt="image-20260525134644154" style="zoom:50%;" />
 
 ### 日常问答
 
-![image-20260525135025670](../AppData/Roaming/Typora/typora-user-images/image-20260525135025670.png)
+![image-20260525135025670](assets/image-20260525135025670.png)
 
 ### 文案优化
 
-![image-20260525135320195](../AppData/Roaming/Typora/typora-user-images/image-20260525135320195.png)
+![image-20260525135320195](assets/image-20260525135320195.png)
 
 ### 图片生成
 
-![image-20260525135511809](../AppData/Roaming/Typora/typora-user-images/image-20260525135511809.png)
+![image-20260525135511809](assets/image-20260525135511809.png)
 
 ### 视频生成
 
-![image-20260525135825079](../AppData/Roaming/Typora/typora-user-images/image-20260525135825079.png)
+![image-20260525135825079](assets/image-20260525135825079.png)
 
 ### MCP集成
 
@@ -98,7 +98,7 @@ Dify 对模型高度中立且兼容性强：无论开源或商业模型，用户
 3. MCP服务器
 4. 填写相应提示词
 
-![image-20260525161607318](../AppData/Roaming/Typora/typora-user-images/image-20260525161607318.png)
+<img src="assets/image-20260525161607318.png" alt="image-20260525161607318" style="zoom:50%;" />
 
 
 
@@ -110,18 +110,18 @@ Dify 对模型高度中立且兼容性强：无论开源或商业模型，用户
 
 配置数据库连接信息：IP地址、数据库名称、端口、账号、密码等
 
-<img src="../AppData/Roaming/Typora/typora-user-images/image-20260525161804770.png" alt="image-20260525161804770" style="zoom: 33%;" />
+<img src="assets/image-20260525161804770.png" alt="image-20260525161804770" style="zoom:33%;" />
 
-<img src="../AppData/Roaming/Typora/typora-user-images/image-20260525161857434.png" alt="image-20260525161857434" style="zoom:33%;" />
+<img src="assets/image-20260525161857434.png" alt="image-20260525161857434" style="zoom:33%;" />
 
 添加执行sql节点
 
-![image-20260525162121132](../AppData/Roaming/Typora/typora-user-images/image-20260525162121132.png)
+<img src="assets/image-20260525162121132.png" alt="image-20260525162121132" style="zoom:33%;" />
 
 将结果交给大模型整理并回答
 
-<img src="../AppData/Roaming/Typora/typora-user-images/image-20260525162231540.png" alt="image-20260525162231540" style="zoom:33%;" />
+<img src="assets/image-20260525162231540.png" alt="image-20260525162231540" style="zoom:33%;" />
 
-![image-20260525162409468](../AppData/Roaming/Typora/typora-user-images/image-20260525162409468.png)
+![image-20260525162409468](assets/image-20260525162409468.png)
 
-![image-20260525180058286](../AppData/Roaming/Typora/typora-user-images/image-20260525180058286.png)
+![image-20260525180058286](assets/image-20260525180058286.png)
